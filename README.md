@@ -47,4 +47,3 @@ Projeto acadêmico desenvolvido para aplicar, na prática, conceitos de programa
 ## Status
 Em desenvolvimento
 
-## Organização do Projeto
