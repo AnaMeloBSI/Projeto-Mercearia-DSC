@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.projmercearia;
-
-/**
- *
- * @author maisa
- */
 public class Usuario {
-    
+
+    protected int id;
+    protected String login;
+    protected String senhaCriptografada;
+
+    public Usuario(int id, String login, String senhaCrip){
+        this.id = id;
+        this.login = login;
+        this.senhaCriptografada = senhaCrip;
+    }
+
+
+    public boolean efetuarLogin(String senha){
+
+        return senhaCriptografada.equals(senha);
+    }
+
 }
