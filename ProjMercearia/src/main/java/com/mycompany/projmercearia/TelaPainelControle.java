@@ -28,6 +28,7 @@ public class TelaPainelControle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        telaLogin1 = new com.mycompany.projmercearia.TelaLogin();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -173,5 +174,6 @@ public class TelaPainelControle extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private com.mycompany.projmercearia.TelaLogin telaLogin1;
     // End of variables declaration//GEN-END:variables
 }
