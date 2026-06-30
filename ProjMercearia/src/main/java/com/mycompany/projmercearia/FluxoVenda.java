@@ -60,3 +60,4 @@ public class FluxoVenda {
     public String getFormaPagamento() { return formaPagamento; }
     public double getValorTotal() { return valorTotal; }
     public String getOperadorResponsavel() { return operadorResponsavel; }
+}
