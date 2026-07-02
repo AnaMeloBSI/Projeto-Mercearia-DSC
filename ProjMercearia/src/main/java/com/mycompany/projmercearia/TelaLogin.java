@@ -170,8 +170,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 if (rs.next()) {
                     String perfil = rs.getString("perfil").trim();
 
-                    // === INÍCIO DO REGISTO DE LOG (PASSO B) ===
-                    // Insere o utilizador, a data atual e a hora atual de entrada
+                    
                     String sqlLog = "INSERT INTO historico_acesso (login, data_acesso, hora_entrada) VALUES (?, CURDATE(), CURTIME())";
                     try (java.sql.PreparedStatement stmtLog = conn.prepareStatement(sqlLog)) {
                         stmtLog.setString(1, usuarioDigitado);
@@ -179,9 +178,8 @@ public class TelaLogin extends javax.swing.JFrame {
                     } catch (Exception e) {
                         System.out.println("Erro ao gravar histórico de entrada: " + e.getMessage());
                     }
-                    // === FIM DO REGISTO DE LOG ===
-
-                    // Redirecionamento dinâmico baseado no perfil cadastrado
+                    
+                   
                     if (perfil.equalsIgnoreCase("Administrador") || perfil.equalsIgnoreCase("admin")) {
                         javax.swing.JOptionPane.showMessageDialog(this, "Bem-vindo, Administrador!");
                         TelaPainelControle painel = new TelaPainelControle();

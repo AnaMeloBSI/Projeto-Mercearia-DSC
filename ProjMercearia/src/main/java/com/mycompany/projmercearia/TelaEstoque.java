@@ -22,15 +22,15 @@ public class TelaEstoque extends javax.swing.JFrame {
     
     private void carregarTabelaEstoque() {
         try {
-            // 1. Chama o PainelControle para buscar a lista completa do MySQL
+         
             PainelControle controle = new PainelControle();
             java.util.ArrayList<Mercadoria> produtos = controle.listarTodasMercadorias();
 
-            // 2. Pega o modelo da sua JTable
+          
             javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tabelaEstoque.getModel();
-            modelo.setRowCount(0); // Limpa a tabela para não duplicar os dados
+            modelo.setRowCount(0); 
 
-            // 3. Varre a lista do banco e joga linha por linha dentro da tabela da tela
+          
             for (Mercadoria m : produtos) {
                 modelo.addRow(new Object[]{
                     m.getCodigoIdentificador(),

@@ -228,7 +228,7 @@ public class TelaVendas extends javax.swing.JFrame {
         int codigoDigitado = Integer.parseInt(codigoStr);
         int qtdDesejada = Integer.parseInt(qtdStr);
         
-        // Busca o produto real na tabela de 100 produtos do MySQL
+        
         PainelControle controle = new PainelControle();
         Mercadoria m = controle.buscarMercadoriaPorCodigo(codigoDigitado);
         
@@ -237,7 +237,7 @@ public class TelaVendas extends javax.swing.JFrame {
             double precoReal = m.getPrecoVenda();
             double subtotalItem = precoReal * qtdDesejada;
             
-            // Adiciona a linha perfeitamente na tabela do carrinho
+            
             javax.swing.table.DefaultTableModel modeloVendas = (javax.swing.table.DefaultTableModel) tabelaItensVenda.getModel();
             modeloVendas.addRow(new Object[]{
                 codigoDigitado, 
@@ -247,11 +247,11 @@ public class TelaVendas extends javax.swing.JFrame {
                 "R$ " + subtotalItem
             });
             
-            // Atualiza a matemática do total e joga na tela
+            
             totalDaVendaAtual += subtotalItem;
             txtTotalGeral.setText(String.format("R$ %.2f", totalDaVendaAtual));
             
-            // Limpa os campos para o próximo produto
+           
             txtCodigoItem.setText("");
             txtQuantidadeItem.setText("1"); 
             txtCodigoItem.requestFocus();
@@ -293,14 +293,14 @@ public class TelaVendas extends javax.swing.JFrame {
 }
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (totalDaVendaAtual == 0.0) {
+       if (totalDaVendaAtual == 0.0) {
         javax.swing.JOptionPane.showMessageDialog(this, "O carrinho está vazio! Adicione itens antes de finalizar.");
         return;
         }
 
         String formaPagamento = cboPagamento.getSelectedItem().toString();
 
-        
+       
         String sqlVenda = "INSERT INTO venda_relatorio (total_venda, operador) VALUES (?, ?)";
 
         try (java.sql.Connection conn = ConexaoBanco.conectar();
@@ -321,7 +321,6 @@ public class TelaVendas extends javax.swing.JFrame {
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar venda no banco: " + e.getMessage());
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtTotalGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalGeralActionPerformed
