@@ -69,4 +69,45 @@ public class PainelControle {
         }
         return null;
     }
+    
+    public void excluirMercadoria(int codigo) {
+        String sql = "DELETE FROM produto WHERE codigo_identificador = ?";
+        try (java.sql.Connection conn = ConexaoBanco.conectar();
+             java.sql.PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, codigo);
+            stmt.executeUpdate();
+            System.out.println("Mercadoria excluída do banco com sucesso!");
+
+        } catch (Exception e) {
+            System.out.println("Erro ao excluir no PainelControle: " + e.getMessage());
+        }
+    }
+    
+    public java.util.ArrayList<Mercadoria> listarTodasMercadorias() {
+        java.util.ArrayList<Mercadoria> lista = new java.util.ArrayList<>();
+        String sql = "SELECT * FROM produto";
+
+        try (java.sql.Connection conn = ConexaoBanco.conectar();
+             java.sql.PreparedStatement stmt = conn.prepareStatement(sql);
+             java.sql.ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Mercadoria m = new Mercadoria(
+                    rs.getInt("codigo_identificador"),
+                    rs.getString("nome"),
+                    rs.getString("categoria"),
+                    rs.getDouble("preco_compra"),
+                    rs.getDouble("preco_venda"),
+                    rs.getInt("quantidade_estoque"),
+                    rs.getString("fornecedor")
+                );
+                lista.add(m);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao listar mercadorias: " + e.getMessage());
+        }
+        return lista;
+    }
 }
+
